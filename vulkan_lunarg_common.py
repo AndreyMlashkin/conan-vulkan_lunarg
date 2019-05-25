@@ -19,6 +19,8 @@ class VulkanLunarGBase(ConanFile):
     license = "Various"
     exports = ["LICENSE.md"]
 
+    _source_subfolder = "source_subfolder"
+
     @property
     def _os(self):
         if self._is_installer:
@@ -73,12 +75,15 @@ class VulkanLunarGBase(ConanFile):
         if self._os == "Windows":
             self.run("7z x -snl -y -mmt{cpu_count} -o\"{outdir}\" \"{archive}\"".format(
                 cpu_count=tools.cpu_count(),
-                outdir="vulkansdk",
+                outdir=self._source_subfolder,
                 archive=targetdlfn,
             ))
         else:
             tools.untargz(targetdlfn, self.build_folder)
             if self._os == "Linux":
-                os.rename(self.version, "vulkansdk")
+                os.rename(self.version, self._source_subfolder)
             else:
-                os.rename("vulkansdk-macos-{}".format(self.version), "vulkansdk")
+                os.rename("vulkansdk-macos-{}".format(self.version), self._source_subfolder)
+
+        if self._os == "Linux":
+            self.run("sh \"{}/build_tools.sh\"".format(self._source_subfolder))
