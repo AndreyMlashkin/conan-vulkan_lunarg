@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
-from vulkan_lunarg_common import VulkanLunarGBase
+from conanfile_base import ConanFileBase
 
 
-class VulkanLunarGConan(VulkanLunarGBase):
+class ConanFileDefault(ConanFileBase):
     name = "vulkan_lunarg"
-    exports = VulkanLunarGBase.exports + ["vulkan_lunarg_common.py"]
+    exports = ConanFileBase.exports + ["conanfile_base.py"]
     settings = "os", "arch"
 
     _is_installer = False

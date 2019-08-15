@@ -7,7 +7,7 @@ import os
 import tempfile
 
 
-class VulkanLunarGBase(ConanFile):
+class ConanFileBase(ConanFile):
     version = "1.1.114.0"
     description = "The LunarG Vulkan SDK provides the development and runtime components required to build, run, and debug Vulkan applications."
     url = "https://github.com/bincrafters/conan-vulkan_lunarg"
