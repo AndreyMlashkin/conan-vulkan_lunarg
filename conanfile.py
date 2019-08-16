@@ -34,7 +34,6 @@ class ConanFileDefault(ConanFileBase):
             base_pkg_folder = os.path.join(base_folder, str(self.settings.arch))
             self.copy(pattern="*", dst="include", src=os.path.join(base_pkg_folder, "include"))
             self.copy(pattern="*", dst="lib", src=os.path.join(base_pkg_folder, "lib"))
-            self.copy(pattern="*", dst="bin", src=os.path.join(base_pkg_folder, "bin"))
             self.copy(pattern="*", dst="etc", src=os.path.join(base_pkg_folder, "etc"))
             self.copy(pattern="LICENSE.txt", dst="licenses", src=base_folder)
         elif self.settings.os == "Macos":

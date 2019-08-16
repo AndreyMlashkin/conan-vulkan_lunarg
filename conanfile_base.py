@@ -84,6 +84,3 @@ class ConanFileBase(ConanFile):
                 os.rename(self.version, self._source_subfolder)
             else:
                 os.rename("vulkansdk-macos-{}".format(self.version), self._source_subfolder)
-
-        if self._os == "Linux":
-            self.run("sh \"{}/build_tools.sh\"".format(self._source_subfolder))
